@@ -44,3 +44,12 @@ export function loginUser(req, res) {
         res.json({ error: "Error logging in" });
     }); 
 }
+
+
+export function deleteUser(req, res) {
+    User.deleteOne({ email: req.params.email }).then(() => {
+        res.json({ message: "User deleted successfully" });
+    }).catch((error) => {
+        res.json({ error: "Error deleting user" });
+    });
+}
